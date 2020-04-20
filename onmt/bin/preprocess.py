@@ -162,9 +162,9 @@ def build_save_dataset(corpus_type, fields, src_reader, tgt_reader,
         return
     
     def configure_process(opt, device_id):
-    if device_id >= 0:
-        torch.cuda.set_device(device_id)
-    set_random_seed(opt.seed, device_id >= 0)
+        if device_id >= 0:
+          torch.cuda.set_device(device_id)
+       set_random_seed(opt.seed, device_id >= 0)
 
     def shard_iterator(srcs, tgts, ids, aligns, existing_shards,
                        existing_fields, corpus_type, opt):
