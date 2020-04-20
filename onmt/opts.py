@@ -367,7 +367,10 @@ def preprocess_opts(parser):
     group.add('--queue_size', '-queue_size', default=40, type=int,
               help="Size of queue for each process in producer/consumer")
 
-
+    group.add('--seed', '-seed', type=int, default=-1,
+              help="Random seed used for the experiments "
+                   "reproducibility.")
+    
 def train_opts(parser):
     """ Training and saving options """
 
