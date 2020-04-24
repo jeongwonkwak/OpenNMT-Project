@@ -7,7 +7,7 @@ from torchtext.data import Field, RawField
 
 from onmt.inputters.datareader_base import DataReaderBase
 
-
+from konlpy.tag import Mecab
 import sentencepiece as spm
 import re
 
@@ -90,10 +90,14 @@ def _feature_tokenize(
     Returns:
         List[str] of tokens.
     """
+    mecab = Mecab()
+    tokens = mecab.morphs(string)
+    """
     if isHangul(string):
         tokens=Korean_tokenizer(string)
     else:
         tokens=English_tokenizer(string)
+    """
     #print("tokens: ",tokens)
     if truncate is not None:
         tokens = tokens[:truncate]
