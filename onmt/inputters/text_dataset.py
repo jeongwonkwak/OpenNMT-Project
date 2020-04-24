@@ -71,7 +71,7 @@ def English_tokenizer(x):
         if c != '':
             b.append(c)
     return b
-
+'''
 # mix this with partial
 def _feature_tokenize(
         string, layer=0, feat_delim=None, truncate=None):
@@ -103,6 +103,33 @@ def _feature_tokenize(
         tokens = tokens[:truncate]
     if feat_delim is not None:
         tokens = [t.split(feat_delim)[layer] for t in tokens]
+    return tokens
+'''
+def _feature_tokenize(
+        string, layer=0, feat_delim=None, truncate=None):
+    
+    sp = spm.SentencePieceProcessor()
+    tokens = []
+
+    if isHangul(string):
+        sp.Load('data/korean_tok.model')
+        token = sp.EncodeAsPieces(x)
+
+    else:
+        sp.Load('data/english_tok.model')
+        token= sp.EncodeAsPieces(x)
+
+    for word in token:
+        c = word.replace("▁", "")
+        if c != '':
+            tokens.append(c)
+
+    #print("tokens: ",tokens)
+    if truncate is not None:
+        tokens = tokens[:truncate]
+    if feat_delim is not None:
+        tokens = [t.split(feat_delim)[layer] for t in tokens]
+
     return tokens
 
 
