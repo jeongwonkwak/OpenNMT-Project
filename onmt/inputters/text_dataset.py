@@ -94,7 +94,7 @@ def _feature_tokenize(
         tokens=Korean_tokenizer(string)
     else:
         tokens=English_tokenizer(string)
-    print("tokens: ",tokens)
+    #print("tokens: ",tokens)
     if truncate is not None:
         tokens = tokens[:truncate]
     if feat_delim is not None:
