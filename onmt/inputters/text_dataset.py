@@ -71,7 +71,7 @@ def English_tokenizer(x):
         if c != '':
             b.append(c)
     return b
-'''
+
 # mix this with partial
 def _feature_tokenize(
         string, layer=0, feat_delim=None, truncate=None):
@@ -131,7 +131,7 @@ def _feature_tokenize(
         tokens = [t.split(feat_delim)[layer] for t in tokens]
 
     return tokens
-
+'''
 
 class TextMultiField(RawField):
     """Container for subfields.
