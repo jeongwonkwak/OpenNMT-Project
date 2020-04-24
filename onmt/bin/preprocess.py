@@ -172,7 +172,7 @@ def build_save_dataset(corpus_type, fields, src_reader, tgt_reader,
         """
         Builds a single iterator yielding every shard of every corpus.
         """
-        configure_process(opt, 0)
+        #configure_process(opt, 0)
         for src, tgt, maybe_id, maybe_align in zip(srcs, tgts, ids, aligns):
             if maybe_id in existing_shards:
                 if opt.overwrite:
