@@ -243,9 +243,9 @@ def preprocess_opts(parser):
     group.add('--train_ids', '-train_ids', nargs='+', default=[None],
               help="ids to name training shards, used for corpus weighting")
 
-    group.add('--valid_src', '-valid_src', default="data/src-val.txt",
+    group.add('--valid_src', '-valid_src', default="data/src-valid.txt",
               help="Path to the validation source data")
-    group.add('--valid_tgt', '-valid_tgt', default="data/tgt-val.txt",
+    group.add('--valid_tgt', '-valid_tgt', default="data/tgt-valid.txt",
               help="Path to the validation target data")
     group.add('--valid_align', '-valid_align', default=None,
               help="Path(s) to the validation src-tgt alignment")
