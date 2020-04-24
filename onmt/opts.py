@@ -457,9 +457,9 @@ def train_opts(parser):
 
     # Optimization options
     group = parser.add_argument_group('Optimization- Type')
-    group.add('--batch_size', '-batch_size', type=int, default=64,
+    group.add('--batch_size', '-batch_size', type=int, default=4096,
               help='Maximum batch size for training')
-    group.add('--batch_type', '-batch_type', default='sents',
+    group.add('--batch_type', '-batch_type', default='tokens',
               choices=["sents", "tokens"],
               help="Batch grouping for batch_size. Standard "
                    "is sents. Tokens will do dynamic batching")
@@ -470,11 +470,11 @@ def train_opts(parser):
               homogeneous batches and reduce padding, and yield
               the produced batches in a shuffled way.
               Inspired by torchtext's pool mechanism.""")
-    group.add('--normalization', '-normalization', default='sents',
+    group.add('--normalization', '-normalization', default='tokens',
               choices=["sents", "tokens"],
               help='Normalization method of the gradient.')
     group.add('--accum_count', '-accum_count', type=int, nargs='+',
-              default=[1],
+              default=[2],
               help="Accumulate gradient this many times. "
                    "Approximately equivalent to updating "
                    "batch_size * accum_count batches at once. "
