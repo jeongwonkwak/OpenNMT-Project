@@ -1,2 +1,2 @@
-# OpenNMT_K2E
+# OpenNMT
 Open NMT Korean to English
