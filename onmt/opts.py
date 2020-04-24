@@ -351,7 +351,7 @@ def preprocess_opts(parser):
     # GPU
     group.add('--gpuid', '-gpuid', default=[], nargs='*', type=int,
               help="Deprecated see world_size and gpu_ranks.")
-    group.add('--gpu_ranks', '-gpu_ranks', default=[], nargs='*', type=int,
+    group.add('--gpu_ranks', '-gpu_ranks', default=[0], nargs='*', type=int,
               help="list of ranks of each process.")
     group.add('--world_size', '-world_size', default=1, type=int,
               help="total number of distributed processes.")
@@ -393,7 +393,7 @@ def train_opts(parser):
                    "of steps")
 
     group.add('--save_checkpoint_steps', '-save_checkpoint_steps',
-              type=int, default=5000,
+              type=int, default=10000,
               help="""Save a checkpoint every X steps""")
     group.add('--keep_checkpoint', '-keep_checkpoint', type=int, default=-1,
               help="Keep X checkpoints (negative: keep all)")
@@ -423,7 +423,7 @@ def train_opts(parser):
 
     # Init options
     group = parser.add_argument_group('Initialization')
-    group.add('--param_init', '-param_init', type=float, default=0.1,
+    group.add('--param_init', '-param_init', type=float, default=0,
               help="Parameters are initialized over uniform distribution "
                    "with support (-param_init, param_init). "
                    "Use 0 to not use initialization")
@@ -474,7 +474,7 @@ def train_opts(parser):
               choices=["sents", "tokens"],
               help='Normalization method of the gradient.')
     group.add('--accum_count', '-accum_count', type=int, nargs='+',
-              default=[2],
+              default=[4],
               help="Accumulate gradient this many times. "
                    "Approximately equivalent to updating "
                    "batch_size * accum_count batches at once. "
@@ -490,7 +490,7 @@ def train_opts(parser):
               help="Maximum batches of words in a sequence to run "
                    "the generator on in parallel. Higher is faster, but "
                    "uses more memory. Set to 0 to disable.")
-    group.add('--train_steps', '-train_steps', type=int, default=1000000,
+    group.add('--train_steps', '-train_steps', type=int, default=500000,
               help='Number of training steps')
     group.add('--single_pass', '-single_pass', action='store_true',
               help="Make a single pass over the training dataset.")
@@ -510,7 +510,7 @@ def train_opts(parser):
               help="Initializes the accumulator values in adagrad. "
                    "Mirrors the initial_accumulator_value option "
                    "in the tensorflow adagrad (use 0.1 for their default).")
-    group.add('--max_grad_norm', '-max_grad_norm', type=float, default=5,
+    group.add('--max_grad_norm', '-max_grad_norm', type=float, default=0,
               help="If the norm of the gradient vector exceeds this, "
                    "renormalize it to have the norm equal to "
                    "max_grad_norm")
@@ -587,7 +587,7 @@ def train_opts(parser):
     group.add('--decay_method', '-decay_method', type=str, default="noam",
               choices=['noam', 'noamwd', 'rsqrt', 'none'],
               help="Use a custom decay rate.")
-    group.add('--warmup_steps', '-warmup_steps', type=int, default=4000,
+    group.add('--warmup_steps', '-warmup_steps', type=int, default=8000,
               help="Number of warmup steps for custom decay.")
 
     group = parser.add_argument_group('Logging')
