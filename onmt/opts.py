@@ -347,7 +347,7 @@ def preprocess_opts(parser):
     group.add('--subword_prefix_is_joiner', '-subword_prefix_is_joiner',
               action='store_true',
               help="mask will need to be inverted if prefix is joiner")
-
+    '''
     # GPU
     group.add('--gpuid', '-gpuid', default=[], nargs='*', type=int,
               help="Deprecated see world_size and gpu_ranks.")
@@ -370,6 +370,7 @@ def preprocess_opts(parser):
     group.add('--seed', '-seed', type=int, default=-1,
               help="Random seed used for the experiments "
                    "reproducibility.")
+    '''
     
 def train_opts(parser):
     """ Training and saving options """
