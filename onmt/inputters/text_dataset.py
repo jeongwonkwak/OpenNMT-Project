@@ -113,11 +113,11 @@ def _feature_tokenize(
 
     if isHangul(string):
         sp.Load('data/korean_tok.model')
-        token = sp.EncodeAsPieces(x)
+        token = sp.EncodeAsPieces(string)
 
     else:
         sp.Load('data/english_tok.model')
-        token= sp.EncodeAsPieces(x)
+        token= sp.EncodeAsPieces(string)
 
     for word in token:
         c = word.replace("▁", "")
