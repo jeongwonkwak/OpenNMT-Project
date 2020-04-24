@@ -39,7 +39,7 @@ def model_opts(parser):
               help="Share the word embeddings between encoder "
                    "and decoder. Need to use shared dictionary for this "
                    "option.")
-    group.add('--position_encoding', '-position_encoding', action='store_true',
+    group.add('--position_encoding', '-position_encoding', action='store_true', default = 'true',
               help="Use a sin to mark relative words positions. "
                    "Necessary for non-RNN style models.")
 
