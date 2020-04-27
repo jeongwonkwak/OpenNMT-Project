@@ -22,7 +22,7 @@ from onmt.inputters.inputter import _build_fields_vocab,\
 
 from functools import partial
 from multiprocessing import Pool
-from onmt.inputters.MakeToken import korean_token, english_token
+#from onmt.inputters.MakeToken import korean_token, english_token
 
 def check_existing_pt_files(opt, corpus_type, ids, existing_fields):
     """ Check if there are existing .pt files to avoid overwriting them """
