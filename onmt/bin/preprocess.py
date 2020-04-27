@@ -160,19 +160,19 @@ def build_save_dataset(corpus_type, fields, src_reader, tgt_reader,
     # every corpus has shards, no new one
     if existing_shards == ids and not opt.overwrite:
         return
-    
+    '''
     def configure_process(opt, device_id):
         if device_id >= 0:
           torch.cuda.set_device(device_id)
        set_random_seed(opt.seed, 0)
-
+    '''
     def shard_iterator(srcs, tgts, ids, aligns, existing_shards,
                        existing_fields, corpus_type, opt):
         print("shard_iterator")
         """
         Builds a single iterator yielding every shard of every corpus.
         """
-        configure_process(opt, 0)
+        #configure_process(opt, 0)
         for src, tgt, maybe_id, maybe_align in zip(srcs, tgts, ids, aligns):
             if maybe_id in existing_shards:
                 if opt.overwrite:

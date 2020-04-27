@@ -7,7 +7,7 @@ from torchtext.data import Field, RawField
 
 from onmt.inputters.datareader_base import DataReaderBase
 
-
+from konlpy.tag import Mecab
 import sentencepiece as spm
 import re
 
@@ -75,32 +75,27 @@ def English_tokenizer(x):
 # mix this with partial
 def _feature_tokenize(
         string, layer=0, feat_delim=None, truncate=None):
-    """Split apart word features (like POS/NER tags) from the tokens.
-
-    Args:
-        string (str): A string with ``tok_delim`` joining tokens and
-            features joined by ``feat_delim``. For example,
-            ``"hello|NOUN|'' Earth|NOUN|PLANET"``.
-        layer (int): Which feature to extract. (Not used if there are no
-            features, indicated by ``feat_delim is None``). In the
-            example above, layer 2 is ``'' PLANET``.
-        truncate (int or NoneType): Restrict sequences to this length of
-            tokens.
-
-    Returns:
-        List[str] of tokens.
+    
+    # use Mecab tokenizer
+    mecab = Mecab()
+    tokens = mecab.morphs(string)
+    
+    # use own tokenizer
     """
     if isHangul(string):
         tokens=Korean_tokenizer(string)
     else:
         tokens=English_tokenizer(string)
+    """
+    # use original tokenizer
+    #tokens = string.split(feat_delim)
+    
     #print("tokens: ",tokens)
     if truncate is not None:
         tokens = tokens[:truncate]
     if feat_delim is not None:
         tokens = [t.split(feat_delim)[layer] for t in tokens]
     return tokens
-
 
 class TextMultiField(RawField):
     """Container for subfields.

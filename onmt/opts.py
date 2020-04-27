@@ -82,9 +82,9 @@ def model_opts(parser):
 
     group.add('--layers', '-layers', type=int, default=-1,
               help='Number of layers in enc/dec.')
-    group.add('--enc_layers', '-enc_layers', type=int, default=2,
+    group.add('--enc_layers', '-enc_layers', type=int, default=6,
               help='Number of layers in the encoder')
-    group.add('--dec_layers', '-dec_layers', type=int, default=2,
+    group.add('--dec_layers', '-dec_layers', type=int, default=6,
               help='Number of layers in the decoder')
     group.add('--rnn_size', '-rnn_size', type=int, default=512,
               help="Size of rnn hidden states. Overwrites "
@@ -243,9 +243,9 @@ def preprocess_opts(parser):
     group.add('--train_ids', '-train_ids', nargs='+', default=[None],
               help="ids to name training shards, used for corpus weighting")
 
-    group.add('--valid_src', '-valid_src', default="data/src-val.txt",
+    group.add('--valid_src', '-valid_src', default="data/src-valid.txt",
               help="Path to the validation source data")
-    group.add('--valid_tgt', '-valid_tgt', default="data/tgt-val.txt",
+    group.add('--valid_tgt', '-valid_tgt', default="data/tgt-valid.txt",
               help="Path to the validation target data")
     group.add('--valid_align', '-valid_align', default=None,
               help="Path(s) to the validation src-tgt alignment")
@@ -347,7 +347,7 @@ def preprocess_opts(parser):
     group.add('--subword_prefix_is_joiner', '-subword_prefix_is_joiner',
               action='store_true',
               help="mask will need to be inverted if prefix is joiner")
-
+    '''
     # GPU
     group.add('--gpuid', '-gpuid', default=[], nargs='*', type=int,
               help="Deprecated see world_size and gpu_ranks.")
@@ -370,6 +370,7 @@ def preprocess_opts(parser):
     group.add('--seed', '-seed', type=int, default=-1,
               help="Random seed used for the experiments "
                    "reproducibility.")
+    '''
     
 def train_opts(parser):
     """ Training and saving options """
@@ -401,7 +402,7 @@ def train_opts(parser):
     # GPU
     group.add('--gpuid', '-gpuid', default=[], nargs='*', type=int,
               help="Deprecated see world_size and gpu_ranks.")
-    group.add('--gpu_ranks', '-gpu_ranks', default=[], nargs='*', type=int,
+    group.add('--gpu_ranks', '-gpu_ranks', default=[0], nargs='*', type=int,
               help="list of ranks of each process.")
     group.add('--world_size', '-world_size', default=1, type=int,
               help="total number of distributed processes.")
@@ -474,7 +475,7 @@ def train_opts(parser):
               choices=["sents", "tokens"],
               help='Normalization method of the gradient.')
     group.add('--accum_count', '-accum_count', type=int, nargs='+',
-              default=[4],
+              default=[2],
               help="Accumulate gradient this many times. "
                    "Approximately equivalent to updating "
                    "batch_size * accum_count batches at once. "
