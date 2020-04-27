@@ -8,7 +8,7 @@ from torchtext.data import Field, RawField
 from onmt.inputters.datareader_base import DataReaderBase
 
 #from konlpy.tag import Mecab
-import sentencepiece as spm
+#import sentencepiece as spm
 import re
 
 
