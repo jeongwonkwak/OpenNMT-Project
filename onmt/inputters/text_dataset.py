@@ -77,8 +77,8 @@ def _feature_tokenize(
         string, layer=0, feat_delim=None, truncate=None):
     
     # use Mecab tokenizer
-    mecab = Mecab()
-    tokens = mecab.morphs(string)
+    #mecab = Mecab()
+    #tokens = mecab.morphs(string)
     
     # use own tokenizer
     """
@@ -88,7 +88,7 @@ def _feature_tokenize(
         tokens=English_tokenizer(string)
     """
     # use original tokenizer
-    #tokens = string.split(feat_delim)
+    tokens = string.split(feat_delim)
     
     #print("tokens: ",tokens)
     if truncate is not None:
@@ -195,7 +195,7 @@ def text_fields(**kwargs):
     Returns:
         TextMultiField
     """
-    print("text_fields")
+    #print("text_fields")
     n_feats = kwargs["n_feats"]
     include_lengths = kwargs["include_lengths"]
     base_name = kwargs["base_name"]
