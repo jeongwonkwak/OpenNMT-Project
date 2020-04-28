@@ -515,7 +515,7 @@ def train_opts(parser):
               help="If the norm of the gradient vector exceeds this, "
                    "renormalize it to have the norm equal to "
                    "max_grad_norm")
-    group.add('--dropout', '-dropout', type=float, default=[0.5], nargs='+',
+    group.add('--dropout', '-dropout', type=float, default=[0.3], nargs='+',
               help="Dropout probability; applied in LSTM stacks.")
     group.add('--attention_dropout', '-attention_dropout', type=float,
               default=[0.1], nargs='+',
@@ -569,7 +569,7 @@ def train_opts(parser):
 
     # learning rate
     group = parser.add_argument_group('Optimization- Rate')
-    group.add('--learning_rate', '-learning_rate', type=float, default=0.001,
+    group.add('--learning_rate', '-learning_rate', type=float, default=1,
               help="Starting learning rate. "
                    "Recommended settings: sgd = 1, adagrad = 0.1, "
                    "adadelta = 1, adam = 0.001")
@@ -673,7 +673,7 @@ def translate_opts(parser):
               help="Set this to -1 to do random sampling from full "
                    "distribution. Set this to value k>1 to do random "
                    "sampling restricted to the k most likely next tokens. "
-                   "Set this to 1 to use argmax or for doing beam "
+                   "Set this to 1 to use arg or for doing beam "
                    "search.")
     group.add('--random_sampling_temp', '-random_sampling_temp',
               default=1., type=float,
