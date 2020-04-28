@@ -155,7 +155,7 @@ def model_opts(parser):
     # Attention options
     group = parser.add_argument_group('Model- Attention')
     group.add('--global_attention', '-global_attention',
-              type=str, default='general',
+              type=str, default='mlp',
               choices=['dot', 'general', 'mlp', 'none'],
               help="The attention type to use: "
                    "dotprod or general (Luong) or MLP (Bahdanau)")
@@ -475,14 +475,14 @@ def train_opts(parser):
               choices=["sents", "tokens"],
               help='Normalization method of the gradient.')
     group.add('--accum_count', '-accum_count', type=int, nargs='+',
-              default=[2],
+              default=[4],
               help="Accumulate gradient this many times. "
                    "Approximately equivalent to updating "
                    "batch_size * accum_count batches at once. "
                    "Recommended for Transformer.")
     group.add('--accum_steps', '-accum_steps', type=int, nargs='+',
               default=[0], help="Steps at which accum_count values change")
-    group.add('--valid_steps', '-valid_steps', type=int, default=2000,
+    group.add('--valid_steps', '-valid_steps', type=int, default=5000,
               help='Perfom validation every X steps')
     group.add('--valid_batch_size', '-valid_batch_size', type=int, default=32,
               help='Maximum batch size for validation')
@@ -502,7 +502,7 @@ def train_opts(parser):
     group.add('--early_stopping_criteria', '-early_stopping_criteria',
               nargs="*", default=None,
               help='Criteria to use for early stopping.')
-    group.add('--optim', '-optim', default='adam',
+    group.add('--optim', '-optim', default='adadelta',
               choices=['sgd', 'adagrad', 'adadelta', 'adam',
                        'sparseadam', 'adafactor', 'fusedadam'],
               help="Optimization method.")
@@ -673,7 +673,7 @@ def translate_opts(parser):
               help="Set this to -1 to do random sampling from full "
                    "distribution. Set this to value k>1 to do random "
                    "sampling restricted to the k most likely next tokens. "
-                   "Set this to 1 to use arg or for doing beam "
+                   "Set this to 1 to use argmax or for doing beam "
                    "search.")
     group.add('--random_sampling_temp', '-random_sampling_temp',
               default=1., type=float,
