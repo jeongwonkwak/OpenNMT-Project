@@ -39,7 +39,7 @@ def model_opts(parser):
               help="Share the word embeddings between encoder "
                    "and decoder. Need to use shared dictionary for this "
                    "option.")
-    group.add('--position_encoding', '-position_encoding', action='store_true', default = 'true',
+    group.add('--position_encoding', '-position_encoding', action='store_true',
               help="Use a sin to mark relative words positions. "
                    "Necessary for non-RNN style models.")
 
@@ -475,7 +475,7 @@ def train_opts(parser):
               choices=["sents", "tokens"],
               help='Normalization method of the gradient.')
     group.add('--accum_count', '-accum_count', type=int, nargs='+',
-              default=[4],
+              default=[2],
               help="Accumulate gradient this many times. "
                    "Approximately equivalent to updating "
                    "batch_size * accum_count batches at once. "
@@ -487,11 +487,11 @@ def train_opts(parser):
     group.add('--valid_batch_size', '-valid_batch_size', type=int, default=32,
               help='Maximum batch size for validation')
     group.add('--max_generator_batches', '-max_generator_batches',
-              type=int, default=32,
+              type=int, default=2,
               help="Maximum batches of words in a sequence to run "
                    "the generator on in parallel. Higher is faster, but "
                    "uses more memory. Set to 0 to disable.")
-    group.add('--train_steps', '-train_steps', type=int, default=12000,
+    group.add('--train_steps', '-train_steps', type=int, default=100000,
               help='Number of training steps')
     group.add('--single_pass', '-single_pass', action='store_true',
               help="Make a single pass over the training dataset.")
@@ -502,7 +502,7 @@ def train_opts(parser):
     group.add('--early_stopping_criteria', '-early_stopping_criteria',
               nargs="*", default=None,
               help='Criteria to use for early stopping.')
-    group.add('--optim', '-optim', default='adadelta',
+    group.add('--optim', '-optim', default='adam',
               choices=['sgd', 'adagrad', 'adadelta', 'adam',
                        'sparseadam', 'adafactor', 'fusedadam'],
               help="Optimization method.")
@@ -515,7 +515,7 @@ def train_opts(parser):
               help="If the norm of the gradient vector exceeds this, "
                    "renormalize it to have the norm equal to "
                    "max_grad_norm")
-    group.add('--dropout', '-dropout', type=float, default=[0.3], nargs='+',
+    group.add('--dropout', '-dropout', type=float, default=[0.1], nargs='+',
               help="Dropout probability; applied in LSTM stacks.")
     group.add('--attention_dropout', '-attention_dropout', type=float,
               default=[0.1], nargs='+',
@@ -569,7 +569,7 @@ def train_opts(parser):
 
     # learning rate
     group = parser.add_argument_group('Optimization- Rate')
-    group.add('--learning_rate', '-learning_rate', type=float, default=1,
+    group.add('--learning_rate', '-learning_rate', type=float, default=2,
               help="Starting learning rate. "
                    "Recommended settings: sgd = 1, adagrad = 0.1, "
                    "adadelta = 1, adam = 0.001")
@@ -751,9 +751,9 @@ def translate_opts(parser):
                    "decoded sentences")
 
     group = parser.add_argument_group('Efficiency')
-    group.add('--batch_size', '-batch_size', type=int, default=30,
+    group.add('--batch_size', '-batch_size', type=int, default=4096,
               help='Batch size')
-    group.add('--batch_type', '-batch_type', default='sents',
+    group.add('--batch_type', '-batch_type', default='tokens',
               choices=["sents", "tokens"],
               help="Batch grouping for batch_size. Standard "
                    "is sents. Tokens will do dynamic batching")
