@@ -515,7 +515,7 @@ def train_opts(parser):
               help="If the norm of the gradient vector exceeds this, "
                    "renormalize it to have the norm equal to "
                    "max_grad_norm")
-    group.add('--dropout', '-dropout', type=float, default=[0.1], nargs='+',
+    group.add('--dropout', '-dropout', type=float, default=[0.3], nargs='+',
               help="Dropout probability; applied in LSTM stacks.")
     group.add('--attention_dropout', '-attention_dropout', type=float,
               default=[0.1], nargs='+',
