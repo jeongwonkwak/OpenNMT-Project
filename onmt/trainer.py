@@ -30,7 +30,6 @@ def build_trainer(opt, device_id, model, fields, optim, model_saver=None):
         model_saver(:obj:`onmt.models.ModelSaverBase`): the utility object
             used to save the model
     """
-    print("build_trainer")
     tgt_field = dict(fields)["tgt"].base_field
     train_loss = onmt.utils.loss.build_loss_compute(model, tgt_field, opt)
     valid_loss = onmt.utils.loss.build_loss_compute(
@@ -128,7 +127,7 @@ class Trainer(object):
                  average_decay=0, average_every=1, model_dtype='fp32',
                  earlystopper=None, dropout=[0.3], dropout_steps=[0],
                  source_noise=None):
-        print("Trainer")
+        
         # Basic attributes.
         self.model = model
         self.train_loss = train_loss
@@ -233,7 +232,7 @@ class Trainer(object):
         Returns:
             The gathered statistics.
         """
-        print("Trainer train")
+        
         if valid_iter is None:
             logger.info('Start training loop without validation...')
         else:
@@ -315,7 +314,7 @@ class Trainer(object):
         Returns:
             :obj:`nmt.Statistics`: validation loss statistics
         """
-        print("Trainer validate")
+        
         valid_model = self.model
         if moving_average:
             # swap model params w/ moving average
