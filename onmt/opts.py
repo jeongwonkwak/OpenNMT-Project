@@ -39,7 +39,7 @@ def model_opts(parser):
               help="Share the word embeddings between encoder "
                    "and decoder. Need to use shared dictionary for this "
                    "option.")
-    group.add('--position_encoding', '-position_encoding', action='store_true',
+    group.add('--position_encoding', '-position_encoding', action='store_true', default='true',
               help="Use a sin to mark relative words positions. "
                    "Necessary for non-RNN style models.")
 
@@ -82,9 +82,9 @@ def model_opts(parser):
 
     group.add('--layers', '-layers', type=int, default=-1,
               help='Number of layers in enc/dec.')
-    group.add('--enc_layers', '-enc_layers', type=int, default=6,
+    group.add('--enc_layers', '-enc_layers', type=int, default=8,
               help='Number of layers in the encoder')
-    group.add('--dec_layers', '-dec_layers', type=int, default=6,
+    group.add('--dec_layers', '-dec_layers', type=int, default=8,
               help='Number of layers in the decoder')
     group.add('--rnn_size', '-rnn_size', type=int, default=512,
               help="Size of rnn hidden states. Overwrites "
@@ -515,7 +515,7 @@ def train_opts(parser):
               help="If the norm of the gradient vector exceeds this, "
                    "renormalize it to have the norm equal to "
                    "max_grad_norm")
-    group.add('--dropout', '-dropout', type=float, default=[0.3], nargs='+',
+    group.add('--dropout', '-dropout', type=float, default=[0.4], nargs='+',
               help="Dropout probability; applied in LSTM stacks.")
     group.add('--attention_dropout', '-attention_dropout', type=float,
               default=[0.1], nargs='+',
