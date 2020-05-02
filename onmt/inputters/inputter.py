@@ -35,7 +35,6 @@ Vocab.__setstate__ = _setstate
 
 
 def make_src(data, vocab):
-    #print("make_src")
     src_size = max([t.size(0) for t in data])
     src_vocab_size = max([t.max() for t in data]) + 1
     alignment = torch.zeros(src_size, len(data), src_vocab_size)
@@ -46,7 +45,6 @@ def make_src(data, vocab):
 
 
 def make_tgt(data, vocab):
-    #print("make_tgt")
     tgt_size = max([t.size(0) for t in data])
     alignment = torch.zeros(tgt_size, len(data)).long()
     for i, sent in enumerate(data):
@@ -60,7 +58,6 @@ class AlignField(LabelField):
     """
 
     def __init__(self, **kwargs):
-        #print("AlignField")
         kwargs['use_vocab'] = False
         kwargs['preprocessing'] = parse_align_idx
         super(AlignField, self).__init__(**kwargs)
@@ -83,7 +80,6 @@ def parse_align_idx(align_pharaoh):
     """
     Parse Pharaoh alignment into [[<src>, <tgt>], ...]
     """
-    #print("parse_align_idx")
     align_list = align_pharaoh.strip().split(' ')
     flatten_align_idx = []
     for align in align_list:
@@ -134,7 +130,6 @@ def get_fields(
         A dict mapping names to fields. These names need to match
         the dataset example attributes.
     """
-    #print("get_fields")
 
     assert src_data_type in ['text', 'img', 'audio', 'vec'], \
         "Data type not implemented"
@@ -186,7 +181,6 @@ def get_fields(
 
 
 def patch_fields(opt, fields):
-    #print("patch_fields")
     dvocab = torch.load(opt.data + '.vocab.pt')
     maybe_cid_field = dvocab.get('corpus_id', None)
     if maybe_cid_field is not None:
@@ -324,7 +318,6 @@ def filter_example(ex, use_src_len=True, use_tgt_len=True,
 
 
 def _pad_vocab_to_multiple(vocab, multiple):
-    print("_pad_vocab_to_multiple")
     vocab_size = len(vocab)
     if vocab_size % multiple == 0:
         return
@@ -337,7 +330,6 @@ def _pad_vocab_to_multiple(vocab, multiple):
 
 def _build_field_vocab(field, counter, size_multiple=1, **kwargs):
     # this is basically copy-pasted from torchtext.
-    print("_build_field_vocab")
     all_specials = [
         field.unk_token, field.pad_token, field.init_token, field.eos_token
     ]
@@ -349,7 +341,6 @@ def _build_field_vocab(field, counter, size_multiple=1, **kwargs):
 
 def _load_vocab(vocab_path, name, counters, min_freq):
     # counters changes in place
-    #print("_load_vocab")
     vocab = _read_vocab_file(vocab_path, name)
     vocab_size = len(vocab)
     logger.info('Loaded %s vocab has %d tokens.' % (name, vocab_size))
@@ -362,7 +353,6 @@ def _load_vocab(vocab_path, name, counters, min_freq):
 
 def _build_fv_from_multifield(multifield, counters, build_fv_args,
                               size_multiple=1):
-    #print("_build_fv_from_multifield")
     for name, field in multifield:
         _build_field_vocab(
             field,
@@ -378,7 +368,6 @@ def _build_fields_vocab(fields, counters, data_type, share_vocab,
                         tgt_vocab_size, tgt_words_min_frequency,
                         subword_prefix="▁",
                         subword_prefix_is_joiner=False):
-    #print("_build_fields_vocab")
     build_fv_args = defaultdict(dict)
     build_fv_args["src"] = dict(
         max_size=src_vocab_size, min_freq=src_words_min_frequency)
@@ -428,7 +417,6 @@ def build_noise_field(src_field, subword=True,
          - word_start
          - end_of_sentence
     """
-    #print("build_noise_field")
     if subword:
         def is_word_start(x): return (x.startswith(subword_prefix) ^ is_joiner)
         sentence_breaks = [subword_prefix + t for t in sentence_breaks]
@@ -472,7 +460,6 @@ def build_vocab(train_dataset_files, fields, data_type, share_vocab,
     Returns:
         Dict of Fields
     """
-    #print("build_vocab")
     counters = defaultdict(Counter)
 
     if src_vocab_path:
@@ -542,7 +529,6 @@ def build_vocab(train_dataset_files, fields, data_type, share_vocab,
 
 def _merge_field_vocabs(src_field, tgt_field, vocab_size, min_freq,
                         vocab_size_multiple):
-    #print("_merge_field_vocabs")
     # in the long run, shouldn't it be possible to do this by calling
     # build_vocab with both the src and tgt data?
     specials = [tgt_field.unk_token, tgt_field.pad_token,
@@ -571,7 +557,6 @@ def _read_vocab_file(vocab_path, tag):
             is considered).
         tag (str): Used for logging which vocab is being read.
     """
-    #print("_read_vocab_file")
     logger.info("Loading {} vocabulary from {}".format(tag, vocab_path))
 
     if not os.path.exists(vocab_path):
@@ -588,7 +573,6 @@ def batch_iter(data, batch_size, batch_size_fn=None, batch_size_multiple=1):
 
     This is an extended version of torchtext.data.batch.
     """
-    #print("batch_iter")
     if batch_size_fn is None:
         def batch_size_fn(new, count, sofar):
             return count
@@ -623,7 +607,6 @@ def batch_iter(data, batch_size, batch_size_fn=None, batch_size_multiple=1):
 
 def _pool(data, batch_size, batch_size_fn, batch_size_multiple,
           sort_key, random_shuffler, pool_factor):
-    #print("_pool")
     for p in torchtext.data.batch(
             data, batch_size * pool_factor,
             batch_size_fn=batch_size_fn):
@@ -645,7 +628,6 @@ class OrderedIterator(torchtext.data.Iterator):
                  batch_size_multiple=1,
                  yield_raw_example=False,
                  **kwargs):
-        #print("OrderedIterator")
         super(OrderedIterator, self).__init__(dataset, batch_size, **kwargs)
         self.batch_size_multiple = batch_size_multiple
         self.yield_raw_example = yield_raw_example
@@ -721,7 +703,6 @@ class MultipleDatasetIterator(object):
                  fields,
                  device,
                  opt):
-        #print("MultipleDatasetIterator")
         self.index = -1
         self.iterables = []
         for shard in train_shards:
@@ -786,7 +767,6 @@ class DatasetLazyIter(object):
     def __init__(self, dataset_paths, fields, batch_size, batch_size_fn,
                  batch_size_multiple, device, is_train, pool_factor,
                  repeat=True, num_batches_multiple=1, yield_raw_example=False):
-        #print("DatasetLazyIter")
         self._paths = dataset_paths
         self.fields = fields
         self.batch_size = batch_size
@@ -879,7 +859,6 @@ def build_dataset_iter(corpus_type, fields, opt, is_train=True, multi=False):
     to iterate over. We implement simple ordered iterator strategy here,
     but more sophisticated strategy like curriculum learning is ok too.
     """
-    #print("build_dataset_iter")
     dataset_glob = opt.data + '.' + corpus_type + '.[0-9]*.pt'
     dataset_paths = list(sorted(
         glob.glob(dataset_glob),
@@ -917,6 +896,5 @@ def build_dataset_iter(corpus_type, fields, opt, is_train=True, multi=False):
 
 
 def build_dataset_iter_multiple(train_shards, fields, opt):
-    #print("build_dataset_iter_multiple")
     return MultipleDatasetIterator(
         train_shards, fields, "cuda" if opt.gpu_ranks else "cpu", opt)
