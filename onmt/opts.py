@@ -347,30 +347,7 @@ def preprocess_opts(parser):
     group.add('--subword_prefix_is_joiner', '-subword_prefix_is_joiner',
               action='store_true',
               help="mask will need to be inverted if prefix is joiner")
-    '''
-    # GPU
-    group.add('--gpuid', '-gpuid', default=[], nargs='*', type=int,
-              help="Deprecated see world_size and gpu_ranks.")
-    group.add('--gpu_ranks', '-gpu_ranks', default=[0], nargs='*', type=int,
-              help="list of ranks of each process.")
-    group.add('--world_size', '-world_size', default=1, type=int,
-              help="total number of distributed processes.")
-    group.add('--gpu_backend', '-gpu_backend',
-              default="nccl", type=str,
-              help="Type of torch distributed backend")
-    group.add('--gpu_verbose_level', '-gpu_verbose_level', default=0, type=int,
-              help="Gives more info on each process per GPU.")
-    group.add('--master_ip', '-master_ip', default="localhost", type=str,
-              help="IP of master for torch.distributed training.")
-    group.add('--master_port', '-master_port', default=10000, type=int,
-              help="Port of master for torch.distributed training.")
-    group.add('--queue_size', '-queue_size', default=40, type=int,
-              help="Size of queue for each process in producer/consumer")
 
-    group.add('--seed', '-seed', type=int, default=-1,
-              help="Random seed used for the experiments "
-                   "reproducibility.")
-    '''
     
 def train_opts(parser):
     """ Training and saving options """
@@ -482,7 +459,7 @@ def train_opts(parser):
                    "Recommended for Transformer.")
     group.add('--accum_steps', '-accum_steps', type=int, nargs='+',
               default=[0], help="Steps at which accum_count values change")
-    group.add('--valid_steps', '-valid_steps', type=int, default=5000,
+    group.add('--valid_steps', '-valid_steps', type=int, default=2000,
               help='Perfom validation every X steps')
     group.add('--valid_batch_size', '-valid_batch_size', type=int, default=32,
               help='Maximum batch size for validation')
@@ -515,7 +492,7 @@ def train_opts(parser):
               help="If the norm of the gradient vector exceeds this, "
                    "renormalize it to have the norm equal to "
                    "max_grad_norm")
-    group.add('--dropout', '-dropout', type=float, default=[0.4], nargs='+',
+    group.add('--dropout', '-dropout', type=float, default=[0.3], nargs='+',
               help="Dropout probability; applied in LSTM stacks.")
     group.add('--attention_dropout', '-attention_dropout', type=float,
               default=[0.1], nargs='+',
