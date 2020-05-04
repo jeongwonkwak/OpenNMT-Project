@@ -82,9 +82,9 @@ def model_opts(parser):
 
     group.add('--layers', '-layers', type=int, default=-1,
               help='Number of layers in enc/dec.')
-    group.add('--enc_layers', '-enc_layers', type=int, default=6,
+    group.add('--enc_layers', '-enc_layers', type=int, default=10,
               help='Number of layers in the encoder')
-    group.add('--dec_layers', '-dec_layers', type=int, default=6,
+    group.add('--dec_layers', '-dec_layers', type=int, default=10,
               help='Number of layers in the decoder')
     group.add('--rnn_size', '-rnn_size', type=int, default=512,
               help="Size of rnn hidden states. Overwrites "
@@ -171,7 +171,7 @@ def model_opts(parser):
                    "positions representations. "
                    "For more detailed information, see: "
                    "https://arxiv.org/pdf/1803.02155.pdf")
-    group.add('--heads', '-heads', type=int, default=6,
+    group.add('--heads', '-heads', type=int, default=8,
               help='Number of heads for transformer self-attention')
     group.add('--transformer_ff', '-transformer_ff', type=int, default=2048,
               help='Size of hidden transformer feed-forward')
