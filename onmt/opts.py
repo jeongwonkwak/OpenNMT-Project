@@ -82,9 +82,9 @@ def model_opts(parser):
 
     group.add('--layers', '-layers', type=int, default=-1,
               help='Number of layers in enc/dec.')
-    group.add('--enc_layers', '-enc_layers', type=int, default=10,
+    group.add('--enc_layers', '-enc_layers', type=int, default=12,
               help='Number of layers in the encoder')
-    group.add('--dec_layers', '-dec_layers', type=int, default=10,
+    group.add('--dec_layers', '-dec_layers', type=int, default=12,
               help='Number of layers in the decoder')
     group.add('--rnn_size', '-rnn_size', type=int, default=512,
               help="Size of rnn hidden states. Overwrites "
@@ -171,7 +171,7 @@ def model_opts(parser):
                    "positions representations. "
                    "For more detailed information, see: "
                    "https://arxiv.org/pdf/1803.02155.pdf")
-    group.add('--heads', '-heads', type=int, default=4,
+    group.add('--heads', '-heads', type=int, default=8,
               help='Number of heads for transformer self-attention')
     group.add('--transformer_ff', '-transformer_ff', type=int, default=2048,
               help='Size of hidden transformer feed-forward')
@@ -288,9 +288,9 @@ def preprocess_opts(parser):
     group.add('--features_vocabs_prefix', '-features_vocabs_prefix',
               type=str, default='',
               help="Path prefix to existing features vocabularies")
-    group.add('--src_vocab_size', '-src_vocab_size', type=int, default=32000,
+    group.add('--src_vocab_size', '-src_vocab_size', type=int, default=50000,
               help="Size of the source vocabulary")
-    group.add('--tgt_vocab_size', '-tgt_vocab_size', type=int, default=32000,
+    group.add('--tgt_vocab_size', '-tgt_vocab_size', type=int, default=50000,
               help="Size of the target vocabulary")
     group.add('--vocab_size_multiple', '-vocab_size_multiple',
               type=int, default=1,
@@ -495,7 +495,7 @@ def train_opts(parser):
     group.add('--dropout', '-dropout', type=float, default=[0.3], nargs='+',
               help="Dropout probability; applied in LSTM stacks.")
     group.add('--attention_dropout', '-attention_dropout', type=float,
-              default=[0.1], nargs='+',
+              default=[0.3], nargs='+',
               help="Attention Dropout probability.")
     group.add('--dropout_steps', '-dropout_steps', type=int, nargs='+',
               default=[0], help="Steps at which dropout changes.")
