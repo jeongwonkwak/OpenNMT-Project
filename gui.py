@@ -86,7 +86,7 @@ class main2:
                 f.write('\n')
 
         main()
-        f = open("data/demo/englishPred.txt", 'r', encoding="utf-8")
+        f = open("pred.txt", 'r', encoding="utf-8")
         line = f.read()
         f.close()
         self.tb2.delete('1.0', 'end')
