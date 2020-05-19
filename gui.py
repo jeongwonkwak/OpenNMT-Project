@@ -59,34 +59,19 @@ class main2:
         return hanCount > 0
 
     def trans(self):
-        '''
-        if self.isHangul(self.tb1.get('1.0', 'end')):
-            f = open("data/demo/koreanInput.txt", 'w', encoding="utf-8")
-            a=Korean_tokenizer(self.tb1.get('1.0', 'end'))
-            f.write(self.tb1.get('1.0', 'end'))
-            f.close()
-            main()
-            f = open("data/demo/englishPred.txt", 'r')
-            line=f.read()
-            f.close()
-            self.tb2.delete('1.0', 'end')
-            self.tb2.insert(1.0,line)
-        else:
-            tkinter.messagebox.showwarning("입력","다시 입력하세요.")
-        '''
         with open("data/demo/Input.txt", "w+", encoding='utf-8') as f:
             f.write(self.tb1.get('1.0', 'end'))
         with open("data/demo/Input.txt", "r", encoding='utf-8') as f:
             line=f.readlines()
 
         token = Korean_tokenizer(line)
-        with open("data/demo/koreanTokenInput.txt", "w", encoding='utf-8') as f:
+        with open("data/demo/KoreanTokenInput.txt", "w", encoding='utf-8') as f:
             for row in token:
                 f.write(row)
                 f.write('\n')
 
         main()
-        f = open("pred.txt", 'r', encoding="utf-8")
+        f = open("data/demo/EnglishTokenOutput.txt", 'r', encoding="utf-8")
         line = f.read()
         f.close()
         self.tb2.delete('1.0', 'end')
