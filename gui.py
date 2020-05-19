@@ -64,6 +64,7 @@ class main2:
         with open("data/demo/Input.txt", "r", encoding='utf-8') as f:
             line=f.readlines()
 
+        #opts->translate에서 src, output을 아래의 파일명으로 바꿔야함.
         token = Korean_tokenizer(line)
         with open("data/demo/KoreanTokenInput.txt", "w", encoding='utf-8') as f:
             for row in token:
