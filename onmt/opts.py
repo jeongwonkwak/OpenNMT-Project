@@ -171,7 +171,7 @@ def model_opts(parser):
                    "positions representations. "
                    "For more detailed information, see: "
                    "https://arxiv.org/pdf/1803.02155.pdf")
-    group.add('--heads', '-heads', type=int, default=16,
+    group.add('--heads', '-heads', type=int, default=8,
               help='Number of heads for transformer self-attention')
     group.add('--transformer_ff', '-transformer_ff', type=int, default=2048,
               help='Size of hidden transformer feed-forward')
@@ -288,9 +288,9 @@ def preprocess_opts(parser):
     group.add('--features_vocabs_prefix', '-features_vocabs_prefix',
               type=str, default='',
               help="Path prefix to existing features vocabularies")
-    group.add('--src_vocab_size', '-src_vocab_size', type=int, default=50000,
+    group.add('--src_vocab_size', '-src_vocab_size', type=int, default=60000,
               help="Size of the source vocabulary")
-    group.add('--tgt_vocab_size', '-tgt_vocab_size', type=int, default=50000,
+    group.add('--tgt_vocab_size', '-tgt_vocab_size', type=int, default=60000,
               help="Size of the target vocabulary")
     group.add('--vocab_size_multiple', '-vocab_size_multiple',
               type=int, default=1,
@@ -464,7 +464,7 @@ def train_opts(parser):
     group.add('--valid_batch_size', '-valid_batch_size', type=int, default=32,
               help='Maximum batch size for validation')
     group.add('--max_generator_batches', '-max_generator_batches',
-              type=int, default=32,
+              type=int, default=24,
               help="Maximum batches of words in a sequence to run "
                    "the generator on in parallel. Higher is faster, but "
                    "uses more memory. Set to 0 to disable.")
@@ -488,7 +488,7 @@ def train_opts(parser):
               help="Initializes the accumulator values in adagrad. "
                    "Mirrors the initial_accumulator_value option "
                    "in the tensorflow adagrad (use 0.1 for their default).")
-    group.add('--max_grad_norm', '-max_grad_norm', type=float, default=0,
+    group.add('--max_grad_norm', '-max_grad_norm', type=float, default=1,
               help="If the norm of the gradient vector exceeds this, "
                    "renormalize it to have the norm equal to "
                    "max_grad_norm")
