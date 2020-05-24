@@ -27,7 +27,7 @@ class main2:
         self.window.resizable(False, False)
         self.transInput()
 
-        icon = PhotoImage(file='icon.png')
+        icon = PhotoImage(file='icon/icon.png')
         self.window.iconphoto(False, icon)
 
 
@@ -69,7 +69,7 @@ class main2:
         self.f2.grid(row=4, column=3)
         self.f2.configure(bg=self.bg)
 
-        arrow = PhotoImage(file="right-arrow.png")
+        arrow = PhotoImage(file="icon/right-arrow.png")
         self.l0 = Label(self.f02, image=arrow, height=40, bg=self.bg)
         self.l0.image = arrow
         self.l0.grid(row=0, column=0, padx=0)
