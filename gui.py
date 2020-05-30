@@ -146,7 +146,7 @@ class main2:
                 line=f.readlines()
 
             token = Korean_tokenizer(line)
-            with open("data/demo/koreanTokenInput.txt", "w", encoding='utf-8') as f:
+            with open("data/demo/KoreanTokenInput.txt", "w", encoding='utf-8') as f:
                 for row in token:
                     if row == '':
                         pass
