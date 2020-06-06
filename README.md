@@ -20,6 +20,12 @@ From February 2020, the weekly report can be found there.
 ```
 I was dumped by her in a car on the way to the park to drink tea.
 ```
+```
+사과의 의미로 사과를 먹으며 사과했다.
+```
+```
+I apologize while eating an apple for the meaning of an apology.
+```
 ---
 ## How to use
 
