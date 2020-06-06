@@ -11,7 +11,7 @@ From February 2020, the weekly report can be found there.
 
 | BLEU | BLEU1 | BLEU2 | BLEU3 | BLEU4 | 
 |---|:---:|:---:|:---:|:---:|
-| **33.55** | 64.6 | 40 | 27.5 | 19.4 | 
+| **33.55** | 64.6 | 40.0 | 27.5 | 19.4 | 
 
 * **Translation Example** 
 ```
