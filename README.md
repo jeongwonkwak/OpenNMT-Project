@@ -14,18 +14,21 @@ From February 2020, the weekly report can be found there.
 | **33.55** | 64.6 | 40.0 | 27.5 | 19.4 | 
 
 * **Translation Example** 
+Example 1 
 ```
 차를 마시러 공원에 가던 차 안에서 나는 그녀에게 차였다.
 ```
 ```
-> I was dumped by her in a car on the way to the park to drink tea .
+> I was dumped by her in a car on the way to the park to drink tea .  
 ```
+Example 2  
 ```
 사과의 의미로 사과를 먹으며 사과했다.
 ```
 ```
 > I apologize while eating an apple for the meaning of an apology .
 ```
+Example 3
 ```
 내가 그린 기린 그림은 긴 기린 그림이냐, 그냥 그린 기린 그림이냐?
 ```
