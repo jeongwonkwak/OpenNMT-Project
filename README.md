@@ -45,7 +45,7 @@ Example 3
 ```
 !python preprocess.py
 ```
-Data set is tokenized through `Mecab`+`SentencePiece`.
+Dataset is tokenized through `Mecab`+`SentencePiece`.
 
 ### Step 2. Train the model
 ```
