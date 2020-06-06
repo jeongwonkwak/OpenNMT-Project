@@ -46,8 +46,9 @@ Example 3
 
 ### Step 2. Train the model
 ```
-!python train.py --train_from data/model/model.pt
+!python train.py
 ```
+If you want to continue training the model, add `--train_from (model_path)/model.pt` later.
 
 ### Step 3. Translate
 ```
