@@ -45,7 +45,7 @@ Example 3
 ```
 !python preprocess.py
 ```
-Dataset is tokenized through `Mecab`+`SentencePiece`.
+The source text file(`src`) and target text file(`tgt`) are tokenized through `Mecab`+`SentencePiece`.
 
 ### Step 2. Train the model
 ```
