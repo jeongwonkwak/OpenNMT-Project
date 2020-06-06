@@ -15,22 +15,22 @@ From February 2020, the weekly report can be found there.
 
 * **Translation Example** 
 ```
-우리 학교 최고의 맛집은 어디일까요?
-```
-```
-Where is the best restaurant in our school ?
-```
-```
 차를 마시러 공원에 가던 차 안에서 나는 그녀에게 차였다.
 ```
 ```
-I was dumped by her in a car on the way to the park to drink tea .
+> I was dumped by her in a car on the way to the park to drink tea .
 ```
 ```
 사과의 의미로 사과를 먹으며 사과했다.
 ```
 ```
-I apologize while eating an apple for the meaning of an apology .
+> I apologize while eating an apple for the meaning of an apology .
+```
+```
+내가 그린 기린 그림은 긴 기린 그림이냐, 그냥 그린 기린 그림이냐?
+```
+```
+> Is the giraffe I drew a long giraffe picture or just a giraffe picture ?
 ```
 ---
 ## How to use
