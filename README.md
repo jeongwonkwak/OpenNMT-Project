@@ -17,10 +17,8 @@ From February 2020, the weekly report can be found there.
 ```
 차를 마시러 공원에 가던 차 안에서 나는 그녀에게 차였다.
 ```
-translate
 ```
-I was dumped by her in a car on the way to the park
-to drink tea.
+I was dumped by her in a car on the way to the park to drink tea.
 ```
 ---
 
