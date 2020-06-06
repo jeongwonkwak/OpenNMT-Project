@@ -21,6 +21,27 @@ From February 2020, the weekly report can be found there.
 I was dumped by her in a car on the way to the park to drink tea.
 ```
 ---
+## How to use
+
+### Step 1. Preprocess the data
+```
+!python preprocess.py
+```
+
+### Step 2. Train the model
+```
+!python train.py --train_from data/model/model.pt
+```
+
+### Step 3. Translate
+```
+!python translate.py -model data/model/model.pt -src data/src-test.txt -tgt data/tgt-test.txt -replace_unk -verbose -gpu 0
+```
+
+### Step 4. Scoring the model
+```
+!perl tools/multi-bleu.perl data/tgt-test.txt < pred.txt
+```
 
 ## Reference
 https://github.com/OpenNMT/OpenNMT-py
