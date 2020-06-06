@@ -59,5 +59,10 @@ Example 3
 !perl tools/multi-bleu.perl data/tgt-test.txt < pred.txt
 ```
 
+### step 5. Excute GUI
+```
+!pyhton gui.py
+```
+
 ## Reference
 https://github.com/OpenNMT/OpenNMT-py
