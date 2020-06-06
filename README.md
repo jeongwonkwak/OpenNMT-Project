@@ -60,7 +60,7 @@ If you want to continue training the model, add `--train_from (model path)/model
 
 ### Step 4. Scoring the model
 ```
-!perl tools/multi-bleu.perl data/tgt-test.txt < pred.txt
+!perl tools/multi-bleu.perl data/tgt-test.txt < data/pred.txt
 ```
 
 ### step 5. Excute GUI
