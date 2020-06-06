@@ -13,7 +13,7 @@ From February 2020, the weekly report can be found there.
 |---|:---:|:---:|:---:|:---:|
 | **33.55** | 64.6 | 40.0 | 27.5 | 19.4 | 
 
-* **Translation Example**  
+* **Translation Sentence**  
 
 Example 1 
 ```
