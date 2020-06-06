@@ -66,6 +66,8 @@ If you want to continue training the model, add `--train_from (model path)/model
 ```
 !pyhton gui.py
 ```
+You have to change from `data/src-test.txt` to `data/demo/KoreanTokenInput.txt` of `translate_opts > --src` in `opts.py`
+and `data/pred.txt` to `data/demo/EnglishTokenOutput.txt`.
 
 ## Reference
 https://github.com/OpenNMT/OpenNMT-py
