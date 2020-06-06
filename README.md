@@ -48,7 +48,7 @@ Example 3
 ```
 !python train.py
 ```
-If you want to continue training the model, add `--train_from (model_path)/model.pt` later.
+If you want to continue training the model, add `--train_from (model path)/model.pt` later.
 
 ### Step 3. Translate
 ```
