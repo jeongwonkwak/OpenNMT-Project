@@ -5,6 +5,8 @@ This repo contains the source code and other details for a neural machine transl
 * **Weekly Report** : [check here](https://github.com/SoYoungCho/Korean-English-NMT/wiki/Weekly-Report-%231) :)  
 From February 2020, the weekly report can be found there.
 
+---
+
 ## Performance
 
 * **BLEU(Bilingual Evaluation Understudy) score** 
