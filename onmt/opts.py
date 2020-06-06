@@ -630,7 +630,7 @@ def translate_opts(parser):
                    "shard_size=0 means no segmentation "
                    "shard_size>0 means segment dataset into multiple shards, "
                    "each shard has shard_size samples")
-    group.add('--output', '-output', default='pred.txt',#'data/demo/EnglishTokenOutput.txt',
+    group.add('--output', '-output', default='data/pred.txt',#'data/demo/EnglishTokenOutput.txt',
               help="Path to output the predictions (each line will "
                    "be the decoded sequence")
     group.add('--report_align', '-report_align', action='store_true',
