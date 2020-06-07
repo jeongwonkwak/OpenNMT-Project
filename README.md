@@ -48,9 +48,9 @@ From February 2020, the weekly report can be found there.
   
 * Configuration 
 
-| Dataset | Sentences | Download | 
-|---|:---:|:---|  
-| Written + Spoken | 920,000 | - [AI-Hub](http://www.aihub.or.kr/) (한-영 말뭉치 AI 데이터)<br>- [Tatoeba](https://tatoeba.org/eng/downloads) (Korean - English) |
+| <center>Dataset</center> | <center>Sentences</center> | <center>Download</center> | 
+|---|:---:|---|  
+| Written + Spoken | 920,000 | - [AI-Hub](http://www.aihub.or.kr/) (한-영 말뭉치 AI 데이터)<br>- [Tatoeba](https://tatoeba.org/eng/downloads) (Korean - English)|
 
 ---
 
