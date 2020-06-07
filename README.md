@@ -42,10 +42,11 @@ From February 2020, the weekly report can be found there.
 ## Dataset
 
 * Preprocess 
-  + Delete the sentence length based on space of less than 149 and more than 387.
-  + Delete the sentence include some special characters
+  + Delete the sentence with the length of 149(Korean) or more and 387(English) or more based on space.
+  + Delete the sentence containing some special characters.
   
 * Configuration 
+
 | Dataset | Sentences | Download | 
 |---|:---:|:---|  
 | Written + Spoken | 920,000 | - [AI-Hub](http://www.aihub.or.kr/) (한-영 말뭉치 AI 데이터)<br>- [Tatoeba](https://tatoeba.org/eng/downloads) (Korean - English) |
