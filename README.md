@@ -42,8 +42,8 @@ From February 2020, the weekly report can be found there.
 ## Dataset
 
 * Preprocess 
-  + Delete the sentence with the length of 149(Korean) or more and 387(English) or more based on space.
-  + Delete the sentence containing some special characters.
+  + `Delete` the sentence with the length of 149(Korean) or more and 387(English) or more based on space.
+  + `Delete` the sentence containing some special characters.
   
 * Configuration 
 
