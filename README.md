@@ -39,6 +39,7 @@ From February 2020, the weekly report can be found there.
 > Is the giraffe I drew a long giraffe picture or just a giraffe picture ?
 ```
 ---
+
 ## Dataset
 
 * Preprocess 
@@ -51,6 +52,7 @@ From February 2020, the weekly report can be found there.
 |---|:---:|:---|  
 | Written + Spoken | 920,000 | - [AI-Hub](http://www.aihub.or.kr/) (한-영 말뭉치 AI 데이터)<br>- [Tatoeba](https://tatoeba.org/eng/downloads) (Korean - English) |
 
+---
 
 ## How to use
 
@@ -82,6 +84,8 @@ If you want to continue training the model, add `--train_from (model path)/model
 ```
 You have to change from `"data/src-test.txt"` to `"data/demo/KoreanTokenInput.txt"` of `translate_opts > --src` in `opts.py`
 and `"data/pred.txt"` to `"data/demo/EnglishTokenOutput.txt"` of `translate_opts > --output`.
+
+---
 
 ## Reference
 https://github.com/OpenNMT/OpenNMT-py
