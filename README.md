@@ -17,21 +17,21 @@ From February 2020, the weekly report can be found there.
 
 * **Translation Sentence**  
 
-Example 1 
+#### Example 1 
 ```
 차를 마시러 공원에 가던 차 안에서 나는 그녀에게 차였다.
 ```
 ```
 > I was dumped by her in a car on the way to the park to drink tea .  
 ```
-Example 2  
+#### Example 2  
 ```
 사과의 의미로 사과를 먹으며 사과했다.
 ```
 ```
 > I apologize while eating an apple for the meaning of an apology .
 ```
-Example 3
+#### Example 3
 ```
 내가 그린 기린 그림은 긴 기린 그림이냐, 그냥 그린 기린 그림이냐?
 ```
@@ -39,6 +39,18 @@ Example 3
 > Is the giraffe I drew a long giraffe picture or just a giraffe picture ?
 ```
 ---
+## Dataset
+
+* Preprocess 
+  + Delete the sentence length based on space of less than 149 and more than 387.
+  + Delete the sentence include some special characters
+  
+* Configuration 
+| Dataset | Sentences | Download | 
+|---|:---:|:---|  
+| Written + Spoken | 920,000 | - [AI-Hub](http://www.aihub.or.kr/) (한-영 말뭉치 AI 데이터)<br>- [Tatoeba](https://tatoeba.org/eng/downloads) (Korean - English) |
+
+
 ## How to use
 
 ### Step 1. Preprocess the data
