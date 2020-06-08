@@ -78,7 +78,7 @@ If you want to continue training the model, add `--train_from (model path)/model
 !perl tools/multi-bleu.perl data/tgt-test.txt < data/pred.txt
 ```
 
-### step 5. Excute GUI
+### tep 5. Excute GUI
 ```
 !pyhton gui.py
 ```
