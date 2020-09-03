@@ -43,14 +43,16 @@ From February 2020, the weekly report can be found there.
 미국 국방부는 중국이 보유한 핵탄두가 200개 이상이며 향후 10년간 2배로 늘어날 수 있다는 전망을 내놨다.
 ```
 ```
-> The U . S . Department of Defense has predicted that China ' s nuclear weapons have more than 200 and could double over the next 10 years .
+> The U . S . Department of Defense has predicted that China ' s nuclear weapons have more than 200 
+  and could double over the next 10 years .
 ```
 #### Example 5
 ```
 국방부는 중국이 북한의 안정 유지에 목적을 두고 관계를 유지하고 있다고 분석했다.
 ```
 ```
-> The Ministry of National Defense analyzed that China is maintaining its relationship with the purpose of maintaining North Korea ' s stability .
+> The Ministry of National Defense analyzed that China is maintaining its relationship 
+  with the purpose of maintaining North Korea ' s stability .
 ```
 ---
 
